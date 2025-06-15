@@ -3,6 +3,7 @@ package com.codewithudo.urlshortner.controller;
 import com.codewithudo.urlshortner.model.UrlMapping;
 import com.codewithudo.urlshortner.service.UrlShortenerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "http://localhost:10001")  // 👈 Add this line
@@ -23,6 +24,12 @@ public class UrlShortenerController {
         System.out.println("Shortened URL: " + shortUrl);
         return shortUrl;
     }
+    // @GetMapping("/shorten")
+    // public ResponseEntity<String> createShortUrl(@RequestParam String longUrl) {
+    //     UrlMapping urlMapping = urlShortenerService.shortenUrl(longUrl);
+    //     return ResponseEntity.ok(urlMapping.getShortUrl());
+    // }
+
 
     // Endpoint to retrieve the original long URL by short code
     @GetMapping("/{shortUrl}")

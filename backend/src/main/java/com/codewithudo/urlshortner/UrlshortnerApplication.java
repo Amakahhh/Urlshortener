@@ -13,13 +13,13 @@ public class UrlshortnerApplication {
         ApplicationContext context = SpringApplication.run(UrlshortnerApplication.class, args);
 
         // Get the UrlShortenerService bean from the context
-        UrlShortenerService urlShortenerService = context.getBean(UrlShortenerService.class);
+        // UrlShortenerService urlShortenerService = context.getBean(UrlShortenerService.class);
 
         // Call the shortenUrl method with a test URL
-        String shortUrl = (urlShortenerService.shortenUrl("https://example.com").getShortUrl());
+        // String shortUrl = (urlShortenerService.shortenUrl("https://example.com").getShortUrl());
 
-        // Print the result
-        System.out.println("Shortened URL: " + shortUrl);
+        // // Print the result
+        // System.out.println("Shortened URL: " + shortUrl);
     }
 
 }
