@@ -2,6 +2,9 @@ package com.codewithudo.urlshortner.controller;
 
 import com.codewithudo.urlshortner.model.UrlMapping;
 import com.codewithudo.urlshortner.service.UrlShortenerService;
+
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,10 +23,18 @@ public class UrlShortenerController {
     // Endpoint to shorten a URL
     @PostMapping("/shorten")
     public String shortenUrl(@RequestParam String longUrl) {
-        String shortUrl = String.valueOf(urlShortenerService.shortenUrl(longUrl));
-        System.out.println("Shortened URL: " + shortUrl);
+        UrlMapping urlMapping = urlShortenerService.shortenUrl(longUrl);
+        String shortUrl = String.valueOf(urlMapping.getShortUrl());
+        // String shortUrl = String.valueOf(urlShortenerService.shortenUrl(longUrl));
+        // System.out.println("Shortened URL: " + shortUrl);
         return shortUrl;
     }
+    // @PostMapping("/shorten")
+    // public Map<String, String> shortenUrl(@RequestParam String longUrl) {
+    //     UrlMapping urlMapping = urlShortenerService.shortenUrl(longUrl);
+    //     return Map.of("shortUrl", urlMapping.getShortUrl());
+    // }
+
     // @GetMapping("/shorten")
     // public ResponseEntity<String> createShortUrl(@RequestParam String longUrl) {
     //     UrlMapping urlMapping = urlShortenerService.shortenUrl(longUrl);
