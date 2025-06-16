@@ -44,6 +44,9 @@ export default function App() {
             placeholder="https://www.example.com"
             value={longUrl}
             onChange={(e) => setLongUrl(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') handleConvert();
+            }}
             className="responsive-input"
           />
           <button className="clipboard-btn responsive-clipboard-btn" onClick={handlePaste}>📋 Paste from clipboard</button>
