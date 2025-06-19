@@ -33,12 +33,12 @@ export default function App() {
 
 
   return (
-    <div className="container responsive-container">
-      <div className="card responsive-card">
-        <h1 className="title responsive-title">CONVERTER</h1>
-        <p className="subtitle responsive-subtitle">Convert any link to a shorter URL</p>
+    <div className="container">
+      <div className="card">
+        <h1 className="title">CONVERTER</h1>
+        <p className="subtitle">Convert any link to a shorter URL</p>
 
-        <div className="input-group responsive-input-group">
+        <div className="input-group">
           <input
             type="text"
             placeholder="https://www.example.com"
@@ -49,12 +49,12 @@ export default function App() {
             }}
             className="responsive-input"
           />
-          <button className="clipboard-btn responsive-clipboard-btn" onClick={handlePaste}>📋 Paste from clipboard</button>
+          <button className="clipboard-btn" onClick={handlePaste}>📋 Paste from clipboard</button>
         </div>
 
-        <button className="convert-btn responsive-convert-btn" onClick={handleConvert}>Convert</button>
+        <button className="convert-btn" onClick={handleConvert}>Convert</button>
 
-        <div className="input-group responsive-input-group">
+        <div className="input-group">
           <input
             type="text"
             value={shortUrl}
@@ -63,10 +63,10 @@ export default function App() {
             ref={shortUrlRef}
             className="responsive-input"
           />
-          <button className="clipboard-btn2 responsive-clipboard-btn" onClick={handleCopy}>   <img src="/copyIcon.svg" alt="copy" /> </button>
+          <button className="clipboard-btn2" onClick={handleCopy}>   <img src="/copyIcon.svg" alt="copy" /> </button>
         </div>
 
-        <footer className="footer responsive-footer">
+        <footer className="footer">
           
           
         </footer>
