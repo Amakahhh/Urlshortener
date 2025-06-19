@@ -3,9 +3,11 @@ package com.codewithudo.urlshortner.controller;
 import com.codewithudo.urlshortner.model.UrlMapping;
 import com.codewithudo.urlshortner.service.UrlShortenerService;
 
+import java.net.URI;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -44,13 +46,19 @@ public class UrlShortenerController {
 
     // Endpoint to retrieve the original long URL by short code
     @GetMapping("/{shortUrl}")
-    public String getLongUrl(@PathVariable String shortUrl) {
+    public ResponseEntity<Object> getLongUrl(@PathVariable String shortUrl) {
         String longUrl = urlShortenerService.getLongUrl(shortUrl);
-        if (longUrl != null) {
-            return longUrl;
-        } else {
-            return "URL not found for: " + shortUrl;
+        if (longUrl == null) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body("Short URL not found");
         }
+        if (!longUrl.startsWith("http://") && !longUrl.startsWith("https://")) {
+            longUrl = "https://" + longUrl;
+        }
+    
+        return ResponseEntity.status(HttpStatus.FOUND)
+        .location(URI.create(longUrl))
+        .build();
     }
 }
 
